@@ -39,6 +39,8 @@ class WelcomeView: UIView {
             welcomeImageView,
             welcomeLabel
         ])
+        
+        setupLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -53,7 +55,7 @@ class WelcomeView: UIView {
             welcomeImageView.heightAnchor.constraint(equalToConstant: .width),
             
             welcomeLabel.topAnchor.constraint(equalTo: welcomeImageView.bottomAnchor, constant: .padding),
-            welcomeLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+            welcomeLabel.leadingAnchor.constraint(equalTo: welcomeImageView.leadingAnchor)
         ])
     }
 }
