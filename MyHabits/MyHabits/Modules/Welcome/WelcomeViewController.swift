@@ -19,6 +19,12 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .white
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.view.backgroundColor = .white
+        
         view.backgroundColor = .white
         view.addSubview(welcomeView)
         

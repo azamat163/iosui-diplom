@@ -26,7 +26,7 @@ class WelcomeView: UIView {
         welcomeLabel = UILabel(frame: .zero)
         welcomeLabel.font = .semibold20
         welcomeLabel.text = .welcomeLabelText
-        welcomeLabel.textColor = UIColor(named: .textColor)
+        welcomeLabel.textColor = .purple
         welcomeLabel.toAutoLayout()
         
         return welcomeLabel
@@ -34,6 +34,8 @@ class WelcomeView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        backgroundColor = .white
         
         self.addSubviews([
             welcomeImageView,
@@ -55,7 +57,7 @@ class WelcomeView: UIView {
             welcomeImageView.heightAnchor.constraint(equalToConstant: .width),
             
             welcomeLabel.topAnchor.constraint(equalTo: welcomeImageView.bottomAnchor, constant: .padding),
-            welcomeLabel.leadingAnchor.constraint(equalTo: welcomeImageView.leadingAnchor)
+            welcomeLabel.centerXAnchor.constraint(equalTo: welcomeImageView.centerXAnchor)
         ])
     }
 }
@@ -63,7 +65,6 @@ class WelcomeView: UIView {
 private extension String {
     static let imageName = "welcome-icon"
     static let welcomeLabelText = "MyHabits"
-    static let textColor = "purple"
 }
 
 private extension CGFloat {
