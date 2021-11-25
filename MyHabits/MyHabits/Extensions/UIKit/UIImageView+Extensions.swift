@@ -9,8 +9,4 @@ import Foundation
 import UIKit
 
 extension UIImageView {
-    func apply(cornerRadius: CGFloat) {
-        clipsToBounds = true
-        layer.cornerRadius = cornerRadius
-    }
 }
