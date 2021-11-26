@@ -29,8 +29,10 @@ class InfoViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         view.backgroundColor = .white
         
-        scrollView.addSubview(infoView)
         view.addSubview(scrollView)
+        scrollView.addSubview(infoView)
+        
+        setupLayout()
     }
     
     private func setupLayout() {
@@ -44,8 +46,8 @@ class InfoViewController: UIViewController {
             infoView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             infoView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             infoView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            infoView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            infoView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor)
+            infoView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            infoView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
         ])
     }
 }

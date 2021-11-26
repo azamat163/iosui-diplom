@@ -11,14 +11,12 @@
 		0301CFA7274DC54900F63F28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301CFA6274DC54900F63F28 /* SceneDelegate.swift */; };
 		0301CFAE274DC54B00F63F28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0301CFAD274DC54B00F63F28 /* Assets.xcassets */; };
 		0301CFBC274DC8F600F63F28 /* HabitsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301CFBB274DC8F600F63F28 /* HabitsStore.swift */; };
-		0301CFC4274DD83700F63F28 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301CFC3274DD83700F63F28 /* SplashViewController.swift */; };
 		0301CFC6274DD9E600F63F28 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301CFC5274DD9E600F63F28 /* View+Extensions.swift */; };
 		0301CFCB274DEC9300F63F28 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301CFCA274DEC9300F63F28 /* UIImageView+Extensions.swift */; };
 		0301CFCD274DED9400F63F28 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301CFCC274DED9400F63F28 /* UIColor+Extensions.swift */; };
 		0301CFCF274DF45100F63F28 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301CFCE274DF45100F63F28 /* HomeViewController.swift */; };
 		0301CFD1274DF69E00F63F28 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301CFD0274DF69E00F63F28 /* UIFont+Extensions.swift */; };
 		0301CFD7275026A600F63F28 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0301CFD6275026A600F63F28 /* Launch Screen.storyboard */; };
-		0301CFD9275026EB00F63F28 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301CFD8275026EB00F63F28 /* SplashView.swift */; };
 		0301CFDD275027FE00F63F28 /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301CFDC275027FE00F63F28 /* HabitsViewController.swift */; };
 		0301CFDF2750281200F63F28 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301CFDE2750281200F63F28 /* InfoViewController.swift */; };
 		0301CFE1275036DB00F63F28 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301CFE0275036DB00F63F28 /* InfoView.swift */; };
@@ -31,14 +29,12 @@
 		0301CFAD274DC54B00F63F28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0301CFB2274DC54B00F63F28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0301CFBB274DC8F600F63F28 /* HabitsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsStore.swift; sourceTree = "<group>"; };
-		0301CFC3274DD83700F63F28 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		0301CFC5274DD9E600F63F28 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		0301CFCA274DEC9300F63F28 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		0301CFCC274DED9400F63F28 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		0301CFCE274DF45100F63F28 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0301CFD0274DF69E00F63F28 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		0301CFD6275026A600F63F28 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		0301CFD8275026EB00F63F28 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		0301CFDC275027FE00F63F28 /* HabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HabitsViewController.swift; path = MyHabits/Modules/Habits/HabitsViewController.swift; sourceTree = SOURCE_ROOT; };
 		0301CFDE2750281200F63F28 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		0301CFE0275036DB00F63F28 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
@@ -124,7 +120,6 @@
 			children = (
 				0301CFDB275027CE00F63F28 /* Habits */,
 				0301CFDA275027C500F63F28 /* Info */,
-				0301CFC2274DD4BF00F63F28 /* Splash */,
 				0301CFC1274DD46B00F63F28 /* Home */,
 			);
 			path = Modules;
@@ -143,15 +138,6 @@
 				0301CFCE274DF45100F63F28 /* HomeViewController.swift */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		0301CFC2274DD4BF00F63F28 /* Splash */ = {
-			isa = PBXGroup;
-			children = (
-				0301CFC3274DD83700F63F28 /* SplashViewController.swift */,
-				0301CFD8275026EB00F63F28 /* SplashView.swift */,
-			);
-			path = Splash;
 			sourceTree = "<group>";
 		};
 		0301CFC7274DDA1800F63F28 /* UIKit */ = {
@@ -254,10 +240,8 @@
 			files = (
 				0301CFBC274DC8F600F63F28 /* HabitsStore.swift in Sources */,
 				0301CFD1274DF69E00F63F28 /* UIFont+Extensions.swift in Sources */,
-				0301CFC4274DD83700F63F28 /* SplashViewController.swift in Sources */,
 				0301CFA5274DC54900F63F28 /* AppDelegate.swift in Sources */,
 				0301CFC6274DD9E600F63F28 /* View+Extensions.swift in Sources */,
-				0301CFD9275026EB00F63F28 /* SplashView.swift in Sources */,
 				0301CFE1275036DB00F63F28 /* InfoView.swift in Sources */,
 				0301CFCF274DF45100F63F28 /* HomeViewController.swift in Sources */,
 				0301CFA7274DC54900F63F28 /* SceneDelegate.swift in Sources */,

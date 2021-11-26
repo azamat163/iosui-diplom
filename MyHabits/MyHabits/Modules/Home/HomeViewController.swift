@@ -17,7 +17,7 @@ class HomeViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .systemBackground
         
         UITabBar.appearance().barTintColor = .barTintColor
         tabBar.tintColor = .purple
