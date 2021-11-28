@@ -16,5 +16,6 @@ extension UIColor {
     static let indigo = UIColor(red: 98/255, green: 54/255, blue: 255/247, alpha: 1)
     static let orange = UIColor(red: 255/255, green: 159/255, blue: 79/247, alpha: 1)
     static let tabBarInactive = UIColor(red: 153/255, green: 153/255, blue: 153/255, alpha: 1)
-    static let barTintColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 0.8)
+    static let barTintColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
+    static let progressColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1)
 }

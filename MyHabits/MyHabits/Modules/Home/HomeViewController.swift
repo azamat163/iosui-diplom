@@ -17,10 +17,17 @@ class HomeViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .lightGray
         
-        UITabBar.appearance().barTintColor = .barTintColor
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .barTintColor
+        
+        tabBar.standardAppearance = appearance
+        tabBar.scrollEdgeAppearance = appearance
+        
         tabBar.tintColor = .purple
+        
         setupVCs()
     }
     
@@ -35,6 +42,14 @@ class HomeViewController: UITabBarController {
                                      title: String,
                                      image: UIImage) -> UIViewController {
         let navController = UINavigationController(rootViewController: rootViewController)
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .barTintColor
+        
+        navController.navigationBar.standardAppearance = appearance
+        navController.navigationBar.scrollEdgeAppearance = appearance
+        
         navController.tabBarItem.title = title
         navController.tabBarItem.image = image
         navController.tabBarItem.selectedImage = image.withTintColor(.purple, renderingMode: .automatic)
