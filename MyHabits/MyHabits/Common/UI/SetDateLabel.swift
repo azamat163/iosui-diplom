@@ -9,7 +9,7 @@ import UIKit
 
 class SetDateLabel: UILabel {
     func apply(text: String) {
-        let string = .text + text
+        let string = .setDateLabelText + text
         let attributedString = NSMutableAttributedString(string: string)
         attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: NSRange(location: 0, length: 6))
         attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: NSRange(location: 7, length: 4))
@@ -18,8 +18,4 @@ class SetDateLabel: UILabel {
         font = .regular17
         attributedText = attributedString
     }
-}
-
-private extension String {
-    static let text = "Каждый день в "
 }

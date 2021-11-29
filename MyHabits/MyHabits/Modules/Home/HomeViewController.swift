@@ -59,10 +59,3 @@ class HomeViewController: UITabBarController {
     }
     
 }
-
-private extension String {
-    static let habitsTitle = "Сегодня"
-    static let infoTitle = "Информация"
-    static let habitsImageName = "habits-icon"
-    static let infoImageName = "info-icon"
-}

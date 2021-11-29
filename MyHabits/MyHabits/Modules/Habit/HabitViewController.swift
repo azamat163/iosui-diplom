@@ -149,8 +149,3 @@ extension HabitViewController: UITextFieldDelegate {
         return true
     }
 }
-
-private extension String {
-    static let leftBarButtonItemTitle = "Отменить"
-    static let rightBarButtonItemTitle = "Сохранить"
-}

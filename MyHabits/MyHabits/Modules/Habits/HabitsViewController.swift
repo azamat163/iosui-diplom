@@ -78,7 +78,13 @@ class HabitsViewController: UIViewController {
     }
 }
 
-extension HabitsViewController: UICollectionViewDelegate {}
+extension HabitsViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let habitDetailsVc = HabitDetailsViewController()
+        habitDetailsVc.habit = shared.habits[indexPath.item]
+        navigationController?.pushViewController(habitDetailsVc, animated: true)
+    }
+}
 
 extension HabitsViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -136,10 +142,10 @@ extension HabitsViewController {
     }
     
     func progressCollectionLayoutSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(.progressEstimated))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(.CollectionView.progressEstimated))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(.progressEstimated))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(.CollectionView.progressEstimated))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
@@ -149,15 +155,15 @@ extension HabitsViewController {
     }
     
     func mainCollectionLayoutSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(.mainEstimated))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(.CollectionView.mainEstimated))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(.mainEstimated))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(.CollectionView.mainEstimated))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = .mainContentInsets
-        section.interGroupSpacing = .interGroupSpacing
+        section.interGroupSpacing = .CollectionView.interGroupSpacing
         
         return section
     }
@@ -191,19 +197,4 @@ extension HabitsViewController {
         navHabit.modalPresentationStyle = .fullScreen
         present(navHabit, animated: true, completion: nil)
     }
-}
-
-private extension String {
-    static let habitTitle = "Создать"
-}
-
-private extension CGFloat {
-    static let progressEstimated: CGFloat = 60
-    static let mainEstimated: CGFloat = 130
-    static let interGroupSpacing: CGFloat = 12
-}
-
-private extension NSDirectionalEdgeInsets {
-    static let progressContentInsets: NSDirectionalEdgeInsets = NSDirectionalEdgeInsets(top: 22, leading: 16, bottom: 18, trailing: 17)
-    static let mainContentInsets: NSDirectionalEdgeInsets = NSDirectionalEdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 17)
 }

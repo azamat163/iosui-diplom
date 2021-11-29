@@ -44,7 +44,7 @@ class HabitView: UIView {
         colorView = UIView(frame: .zero)
         colorView.backgroundColor = .orange
         colorView.clipsToBounds = true
-        colorView.layer.cornerRadius = .cornerRadius
+        colorView.layer.cornerRadius = .HabitView.cornerRadius
         let gesture = UITapGestureRecognizer(target: self, action: #selector(handleColorSelection))
         colorView.addGestureRecognizer(gesture)
         colorView.toAutoLayout()
@@ -101,30 +101,30 @@ class HabitView: UIView {
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: .topPadding),
-            nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: .leftPadding),
+            nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: .HabitView.topPadding),
+            nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: .HabitView.leftPadding),
             
             setNameTextField.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            setNameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: .shortPadding),
+            setNameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: .HabitView.shortPadding),
             
             colorLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            colorLabel.topAnchor.constraint(equalTo: setNameTextField.bottomAnchor, constant: .padding),
+            colorLabel.topAnchor.constraint(equalTo: setNameTextField.bottomAnchor, constant: .HabitView.padding),
             
             colorView.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            colorView.topAnchor.constraint(equalTo: colorLabel.bottomAnchor, constant: .shortPadding),
-            colorView.widthAnchor.constraint(equalToConstant: .colorViewWidth),
-            colorView.heightAnchor.constraint(equalToConstant: .colorViewWidth),
+            colorView.topAnchor.constraint(equalTo: colorLabel.bottomAnchor, constant: .HabitView.shortPadding),
+            colorView.widthAnchor.constraint(equalToConstant: .HabitView.colorViewWidth),
+            colorView.heightAnchor.constraint(equalToConstant: .HabitView.colorViewWidth),
 
             
             dateLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            dateLabel.topAnchor.constraint(equalTo: colorView.bottomAnchor, constant: .padding),
+            dateLabel.topAnchor.constraint(equalTo: colorView.bottomAnchor, constant: .HabitView.padding),
             
             setDateLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            setDateLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: .shortPadding),
+            setDateLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: .HabitView.shortPadding),
             
             datePicker.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             datePicker.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            datePicker.topAnchor.constraint(equalTo: setDateLabel.bottomAnchor, constant: .padding)
+            datePicker.topAnchor.constraint(equalTo: setDateLabel.bottomAnchor, constant: .HabitView.padding)
         ])
     }
     
@@ -142,21 +142,4 @@ class HabitView: UIView {
         formatter.timeStyle = DateFormatter.Style.short
         return formatter.string(from: date)
     }
-}
-
-private extension String {
-    static let nameLabelText = "НАЗВАНИЕ"
-    static let placeholder = "Бегать по утрам, спать 8 часов и т.п."
-    static let colorLabelText = "ЦВЕТ"
-    static let dateLabelText = "ВРЕМЯ"
-    static let setDateLabelText = "Каждый день в "
-}
-
-private extension CGFloat {
-    static let cornerRadius: CGFloat = 15
-    static let leftPadding: CGFloat = 16
-    static let topPadding: CGFloat = 21
-    static let shortPadding: CGFloat = 7
-    static let padding: CGFloat = 15
-    static let colorViewWidth: CGFloat = 30
 }
