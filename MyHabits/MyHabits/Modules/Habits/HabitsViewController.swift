@@ -80,9 +80,13 @@ class HabitsViewController: UIViewController {
 
 extension HabitsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let habitDetailsVc = HabitDetailsViewController()
-        habitDetailsVc.habit = shared.habits[indexPath.item]
-        navigationController?.pushViewController(habitDetailsVc, animated: true)
+        if indexPath.section == 1 {
+            let habitDetailsVc = HabitDetailsViewController()
+            let habit = shared.habits[indexPath.item]
+            habitDetailsVc.habit = habit
+            habitDetailsVc.title = habit.name
+            navigationController?.pushViewController(habitDetailsVc, animated: true)
+        }
     }
 }
 
