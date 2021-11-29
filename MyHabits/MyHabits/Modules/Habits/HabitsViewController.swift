@@ -33,7 +33,7 @@ class HabitsViewController: UIViewController {
     }
     
     private func commonInit() {
-        setupNavButtonItem()
+        setupNav()
         setupView()
         setupLayout()
     }
@@ -49,9 +49,10 @@ class HabitsViewController: UIViewController {
         collectionView.reloadData()
     }
     
-    private func setupNavButtonItem() {
+    private func setupNav() {
+        navigationController?.navigationBar.tintColor = .purple
+
         let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addHabit))
-        rightBarButtonItem.tintColor = .purple
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     

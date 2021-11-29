@@ -47,9 +47,9 @@ class HabitDetailsViewController: UIViewController {
     
     private func setupNav() {
         navigationController?.navigationBar.prefersLargeTitles = false
-
+        navigationController?.navigationBar.tintColor = .purple
+        
         let rightBarButtonItem = UIBarButtonItem(title: .rightEditBarButtonTitle, style: .plain, target: self, action:#selector(tap))
-        rightBarButtonItem.tintColor = .purple
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
