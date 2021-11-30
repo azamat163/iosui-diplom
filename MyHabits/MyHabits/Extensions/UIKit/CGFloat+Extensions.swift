@@ -17,6 +17,8 @@ extension CGFloat {
         static let shortPadding: CGFloat = 7
         static let padding: CGFloat = 15
         static let colorViewWidth: CGFloat = 30
+        static let buttonPadding: CGFloat = 219
+        static let buttonHeight: CGFloat = 22
     }
     
     enum CollectionView {

@@ -8,7 +8,7 @@
 import UIKit
 
 class HabitDetailsViewController: UIViewController {
-    
+        
     fileprivate let shared = HabitsStore.shared
     
     var habit: Habit?
@@ -26,32 +26,41 @@ class HabitDetailsViewController: UIViewController {
         view.addSubview(tableView)
         
         commonInit()
+        
+        navigationItem.largeTitleDisplayMode = .never
     }
     
+        
     private func commonInit() {
         setupNav()
         setupView()
         setupLayout()
     }
     
+    //MARK: - setup tableView
+    
     private func setupView() {
         view.backgroundColor = .lightGray
         
         tableView.dataSource = self
         tableView.delegate = self
+        
         tableView.register(HabitDetailsTableViewCell.self, forCellReuseIdentifier: HabitDetailsTableViewCell.identifier)
         tableView.rowHeight = UITableView.automaticDimension
         
         tableView.reloadData()
     }
     
+    //MARK: - setup navigation
+    
     private func setupNav() {
-        navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationBar.tintColor = .purple
         
-        let rightBarButtonItem = UIBarButtonItem(title: .rightEditBarButtonTitle, style: .plain, target: self, action:#selector(tap))
+        let rightBarButtonItem = UIBarButtonItem(title: .rightEditBarButtonTitle, style: .plain, target: self, action:#selector(openEditScreen))
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
+    
+    //MARK: - setup constraints
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
@@ -68,16 +77,21 @@ extension HabitDetailsViewController: UITableViewDelegate {
 }
 
 extension HabitDetailsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        <#code#>
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        1
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        47
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        .activityText
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return shared.dates.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -99,6 +113,28 @@ extension HabitDetailsViewController: UITableViewDataSource {
     }
 }
 
+//MARK: - extension for open edit screen
+
 extension HabitDetailsViewController {
-    @objc func tap() {}
+    @objc func openEditScreen() {
+        guard let habit = habit else { return }
+
+        let habitVc = HabitViewController()
+        let navHabit = UINavigationController(rootViewController: habitVc)
+        habitVc.handler = { (title) in
+            self.navigationItem.title = title
+        }
+        habitVc.delegate = self
+        navHabit.navigationBar.prefersLargeTitles = false
+        habitVc.navigationItem.title = .habitCreateScreenTitle
+        habitVc.habitView.configure(with: habit)
+        navHabit.modalPresentationStyle = .fullScreen
+        present(navHabit, animated: true, completion: nil)
+    }
+}
+
+extension HabitDetailsViewController: HabitDetailsViewControllerDelegate {
+    func closeViewControllers() {
+        navigationController?.popToRootViewController(animated: true)
+    }
 }

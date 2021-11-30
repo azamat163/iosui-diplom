@@ -16,7 +16,7 @@ extension String {
     static let colorLabelText = "ЦВЕТ"
     static let dateLabelText = "ВРЕМЯ"
     static let setDateLabelText = "Каждый день в "
-    static let habitTitle = "Создать"
+    static let habitCreateScreenTitle = "Создать"
     
     static let titleLabelText = "Привычка за 21 день"
     static let firstContentLabelText = """
@@ -51,4 +51,15 @@ extension String {
     static let invalidStateText = "Неизвестное состояние"
     
     static let counterText = "Счетчик: "
+    
+    static let activityText = "АКТИВНОСТЬ"
+    
+    static let deleteButtonTitle = "Удалить привычку"
+    
+    static let habitEditScreenTitle = "Править"
+    
+    static let alertTitle = "Удалить привычку"
+    static let alertMessage = "Вы хотите удалить привычку "
+    static let alertCancel = "Отмена"
+    static let alertDelete = "Удалить"
 }

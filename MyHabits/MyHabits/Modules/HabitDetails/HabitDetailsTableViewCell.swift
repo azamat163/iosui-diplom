@@ -25,7 +25,6 @@ class HabitDetailsTableViewCell: UITableViewCell {
     lazy var dateCheckImageView: UIImageView = {
         dateCheckImageView = UIImageView(frame: .zero)
         dateCheckImageView.image = UIImage(named: .dateCheckImageName)
-        dateCheckImageView.alpha = 0
         dateCheckImageView.toAutoLayout()
         
         return dateCheckImageView
@@ -46,10 +45,12 @@ class HabitDetailsTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK
+    
     func configure(dateString: String, isTracked: Bool) {
         dateLabel.text = dateString
-        let checkTrack: CGFloat = isTracked ? 1 : 0
-        dateCheckImageView.alpha = checkTrack
+        let isTrack = isTracked ? false : true
+        dateCheckImageView.isHidden = isTrack
     }
     
     private func setupLayout() {

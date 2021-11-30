@@ -31,6 +31,8 @@ class HomeViewController: UITabBarController {
         setupVCs()
     }
     
+    //MARK: - setup viewcontrollers
+    
     func setupVCs() {
         viewControllers = [
             createNavController(for: HabitsViewController(), title: .habitsTitle, image: Constants.habitsImage!),

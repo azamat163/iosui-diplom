@@ -29,6 +29,7 @@ class HabitsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        navigationController?.navigationBar.prefersLargeTitles = true
         collectionView.reloadData()
     }
     
@@ -85,8 +86,10 @@ extension HabitsViewController: UICollectionViewDelegate {
             let habitDetailsVc = HabitDetailsViewController()
             let habit = shared.habits[indexPath.item]
             habitDetailsVc.habit = habit
-            habitDetailsVc.title = habit.name
+            habitDetailsVc.navigationItem.title = habit.name
             navigationController?.pushViewController(habitDetailsVc, animated: true)
+            
+            collectionView.reloadData()
         }
     }
 }
@@ -198,7 +201,7 @@ extension HabitsViewController {
         let habitVc = HabitViewController()
         let navHabit = UINavigationController(rootViewController: habitVc)
         navHabit.navigationBar.prefersLargeTitles = false
-        habitVc.navigationItem.title = .habitTitle
+        habitVc.navigationItem.title = .habitCreateScreenTitle
         navHabit.modalPresentationStyle = .fullScreen
         present(navHabit, animated: true, completion: nil)
     }

@@ -27,6 +27,7 @@
 		0301CFF127539D3300F63F28 /* HabitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301CFF027539D3300F63F28 /* HabitCollectionViewCell.swift */; };
 		0301CFF32753DF0200F63F28 /* ProgressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301CFF22753DF0200F63F28 /* ProgressCollectionViewCell.swift */; };
 		0301CFF82754323300F63F28 /* HabitDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301CFF72754323300F63F28 /* HabitDetailsViewController.swift */; };
+		0301CFFA2756D52B00F63F28 /* HabitDetailsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301CFF92756D52B00F63F28 /* HabitDetailsViewControllerDelegate.swift */; };
 		F3574BA927563A1900ACA014 /* HabitsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3574BA827563A1900ACA014 /* HabitsViewControllerDelegate.swift */; };
 		F3CE9FF027549DD700F4A5B9 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE9FEF27549DD700F4A5B9 /* CGFloat+Extensions.swift */; };
 		F3CE9FF227549E1C00F4A5B9 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE9FF127549E1C00F4A5B9 /* String+Extensions.swift */; };
@@ -57,6 +58,7 @@
 		0301CFF027539D3300F63F28 /* HabitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCollectionViewCell.swift; sourceTree = "<group>"; };
 		0301CFF22753DF0200F63F28 /* ProgressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCollectionViewCell.swift; sourceTree = "<group>"; };
 		0301CFF72754323300F63F28 /* HabitDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsViewController.swift; sourceTree = "<group>"; };
+		0301CFF92756D52B00F63F28 /* HabitDetailsViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsViewControllerDelegate.swift; sourceTree = "<group>"; };
 		F3574BA827563A1900ACA014 /* HabitsViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewControllerDelegate.swift; sourceTree = "<group>"; };
 		F3CE9FEF27549DD700F4A5B9 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		F3CE9FF127549E1C00F4A5B9 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			children = (
 				0301CFF72754323300F63F28 /* HabitDetailsViewController.swift */,
 				F3CE9FF52754A1AE00F4A5B9 /* HabitDetailsTableViewCell.swift */,
+				0301CFF92756D52B00F63F28 /* HabitDetailsViewControllerDelegate.swift */,
 			);
 			path = HabitDetails;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				0301CFBC274DC8F600F63F28 /* HabitsStore.swift in Sources */,
 				F3CE9FF227549E1C00F4A5B9 /* String+Extensions.swift in Sources */,
 				0301CFD1274DF69E00F63F28 /* UIFont+Extensions.swift in Sources */,
+				0301CFFA2756D52B00F63F28 /* HabitDetailsViewControllerDelegate.swift in Sources */,
 				0301CFA5274DC54900F63F28 /* AppDelegate.swift in Sources */,
 				F3CE9FF42754A08600F4A5B9 /* NSDirectionalEdgeInsets+Extensions.swift in Sources */,
 				0301CFC6274DD9E600F63F28 /* View+Extensions.swift in Sources */,

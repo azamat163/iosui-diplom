@@ -10,6 +10,7 @@ import UIKit
 class HabitView: UIView {
     
     var delegate: HabitViewControllerDelegate?
+    var habit: Habit?
 
     lazy var nameLabel: HabitNameLabel = {
         nameLabel = HabitNameLabel(frame: .zero)
@@ -25,7 +26,7 @@ class HabitView: UIView {
         setNameTextField.tintColor = .blue
         setNameTextField.textColor = .blue
         setNameTextField.backgroundColor = .white
-        setNameTextField.font = .regular17
+        setNameTextField.font = .semibold17
         setNameTextField.toAutoLayout()
         
         return setNameTextField
@@ -79,6 +80,19 @@ class HabitView: UIView {
         return datePicker
     }()
     
+    lazy var deleteButton: UIButton = {
+        deleteButton = UIButton(frame: .zero)
+        deleteButton.setTitle(.deleteButtonTitle, for: .normal)
+        deleteButton.setTitleColor(.red, for: .normal)
+        deleteButton.titleLabel?.font = .regular17
+        deleteButton.titleLabel?.textAlignment = .center
+        deleteButton.isHidden = true
+        deleteButton.addTarget(self, action: #selector(deleteHabit), for: .touchUpInside)
+        deleteButton.toAutoLayout()
+        
+        return deleteButton
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -89,7 +103,8 @@ class HabitView: UIView {
             colorView,
             dateLabel,
             setDateLabel,
-            datePicker
+            datePicker,
+            deleteButton
         ])
         
         setupLayout()
@@ -124,8 +139,24 @@ class HabitView: UIView {
             
             datePicker.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             datePicker.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            datePicker.topAnchor.constraint(equalTo: setDateLabel.bottomAnchor, constant: .HabitView.padding)
+            datePicker.topAnchor.constraint(equalTo: setDateLabel.bottomAnchor, constant: .HabitView.padding),
+            datePicker.bottomAnchor.constraint(equalTo: deleteButton.topAnchor, constant: -.HabitView.buttonPadding),
+            
+
+            deleteButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            deleteButton.heightAnchor.constraint(equalToConstant: .HabitView.buttonHeight)
+            
+            
         ])
+    }
+    
+    func configure(with habit: Habit) {
+        self.habit = habit
+        setNameTextField.text = habit.name
+        colorView.backgroundColor = habit.color
+        setDateLabel.apply(text: convertDateToStr(with: habit.date))
+        datePicker.date = habit.date
+        deleteButton.isHidden = false
     }
     
     @objc func handleColorSelection() {
@@ -135,6 +166,10 @@ class HabitView: UIView {
     
     @objc func handleDateSelection() {
         setDateLabel.apply(text: convertDateToStr(with: datePicker.date))
+    }
+    
+    @objc func deleteHabit() {
+        delegate?.handleDeleteHabit()
     }
     
     private func convertDateToStr(with date: Date) -> String {

@@ -8,6 +8,7 @@
 import Foundation
 
 protocol HabitViewControllerDelegate: AnyObject {
-     
     func handleColorSelection()
+    
+    func handleDeleteHabit()
 }
