@@ -13,17 +13,7 @@ class ProgressCollectionViewCell: UICollectionViewCell {
     static var identifier: String {
         return String(describing: self)
     }
-        
-    var todayProgress: Float? {
-        didSet {
-            guard let progress = todayProgress else { return }
             
-            statusLabel.text = stateText(with: progress)
-            procentLabel.text = "\(toProcent(with: progress)) %"
-            progressView.progress = progress
-        }
-    }
-    
     lazy var statusLabel: UILabel = {
         statusLabel = UILabel(frame: .zero)
         statusLabel.font = .regular13
@@ -44,7 +34,7 @@ class ProgressCollectionViewCell: UICollectionViewCell {
     
     lazy var stackView: UIStackView = {
         stackView = UIStackView(arrangedSubviews: [statusLabel, procentLabel])
-        stackView.spacing = .spacing
+        stackView.spacing = .ProgressCell.spacing
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
         stackView.toAutoLayout()
@@ -55,7 +45,7 @@ class ProgressCollectionViewCell: UICollectionViewCell {
     lazy var progressView: UIProgressView = {
         progressView = UIProgressView(frame: .zero)
         progressView.clipsToBounds = true
-        progressView.layer.cornerRadius = .progressCornerRadius
+        progressView.layer.cornerRadius = .ProgressCell.progressCornerRadius
         progressView.progressTintColor = .purple
         progressView.progressViewStyle = .bar
         progressView.backgroundColor = .progressColor
@@ -85,21 +75,27 @@ class ProgressCollectionViewCell: UICollectionViewCell {
     
     private func setupView() {
         contentView.backgroundColor = .white
-        contentView.layer.cornerRadius = .contentViewCornerRadius
+        contentView.layer.cornerRadius = .ProgressCell.contentViewCornerRadius
         contentView.clipsToBounds = true
     }
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .topPadding),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .padding),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.padding),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .ProgressCell.topPadding),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .ProgressCell.padding),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.ProgressCell.padding),
             
             progressView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             progressView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
-            progressView.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .bottonPadding),
+            progressView.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .ProgressCell.bottonPadding),
             progressView.heightAnchor.constraint(equalToConstant: 7)
         ])
+    }
+    
+    func configure(with progress: Float) {
+        statusLabel.text = stateText(with: progress)
+        procentLabel.text = "\(toProcent(with: progress)) %"
+        progressView.progress = progress
     }
 }
 
@@ -120,21 +116,4 @@ extension ProgressCollectionViewCell {
     func toProcent(with progress: Float) -> Int {
         return Int(progress * 100)
     }
-}
-
-private extension String {
-    static let beginStateText = "Давай начинать - мы верим в тебя!"
-    static let middleStateText = "Все получится!"
-    static let finishStateText = "Ты молодец! Все получилось!"
-    static let invalidStateText = "Неизвестное состояние"
-
-}
-
-private extension CGFloat {
-    static let spacing: CGFloat = 8
-    static let progressCornerRadius: CGFloat = 3.5
-    static let contentViewCornerRadius: CGFloat = 8
-    static let padding: CGFloat = 12
-    static let topPadding: CGFloat = 10
-    static let bottonPadding: CGFloat = 15
 }

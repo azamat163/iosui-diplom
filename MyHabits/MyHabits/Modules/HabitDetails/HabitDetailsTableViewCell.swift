@@ -12,24 +12,7 @@ class HabitDetailsTableViewCell: UITableViewCell {
     static var identifier: String {
         return String(describing: self)
     }
-    
-    var habit: Habit?
-    var date: Date?
-    var shared: HabitsStore? {
-        didSet {
-            guard let habit = habit else { return }
-            guard let shared = shared else { return }
-            guard let date = date else { return }
-            
-            dateLabel.text = self.formattedDate(with: date)
-            
-            let isTracked = shared.habit(habit, isTrackedIn: date)
-            if isTracked == true {
-                dateCheckImageView.alpha = 1
-            }
-        }
-    }
-    
+        
     lazy var dateLabel: UILabel = {
         dateLabel = UILabel(frame: .zero)
         dateLabel.font = .regular17
@@ -63,6 +46,12 @@ class HabitDetailsTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configure(dateString: String, isTracked: Bool) {
+        dateLabel.text = dateString
+        let checkTrack: CGFloat = isTracked ? 1 : 0
+        dateCheckImageView.alpha = checkTrack
+    }
+    
     private func setupLayout() {
         NSLayoutConstraint.activate([
             dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .HabitDetails.leadingPadding),
@@ -73,16 +62,5 @@ class HabitDetailsTableViewCell: UITableViewCell {
             dateCheckImageView.widthAnchor.constraint(equalToConstant: .HabitDetails.width),
             dateCheckImageView.heightAnchor.constraint(equalToConstant: .HabitDetails.height)
         ])
-    }
-}
-
-extension HabitDetailsTableViewCell {
-    private func formattedDate(with date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = .init(identifier: "ru_RU")
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        formatter.doesRelativeDateFormatting = true
-        return formatter.string(from: date)
     }
 }

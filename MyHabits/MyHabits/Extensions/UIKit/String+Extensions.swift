@@ -44,4 +44,11 @@ extension String {
     static let infoImageName = "info-icon"
     static let dateCheckImageName = "date-check-icon"
     static let rightEditBarButtonTitle = "Править"
+    
+    static let beginStateText = "Давай начинать - мы верим в тебя!"
+    static let middleStateText = "Все получится!"
+    static let finishStateText = "Ты молодец! Все получилось!"
+    static let invalidStateText = "Неизвестное состояние"
+    
+    static let counterText = "Счетчик: "
 }

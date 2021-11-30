@@ -74,18 +74,23 @@ extension HabitDetailsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HabitDetailsTableViewCell.identifier, for: indexPath) as? HabitDetailsTableViewCell else { fatalError() }
+        
+        return configureCell(with: cell, indexPath: indexPath)
+    }
+    
+    private func configureCell(with cell: HabitDetailsTableViewCell, indexPath: IndexPath) -> UITableViewCell {
         guard let habit = habit else { fatalError() }
         
-        cell.habit = habit
-        cell.date = shared.dates[indexPath.row]
-        cell.shared = shared
+        let date = shared.dates[indexPath.row]
+        let isTracked = shared.habit(habit, isTrackedIn: date)
+
+        guard let dateString = shared.trackDateString(forIndex: indexPath.row) else { fatalError() }
+        cell.configure(dateString: dateString, isTracked: isTracked)
         
         return cell
     }
 }
 
 extension HabitDetailsViewController {
-    @objc func tap() {
-        
-    }
+    @objc func tap() {}
 }

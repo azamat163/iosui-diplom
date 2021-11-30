@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol HabitViewControllerDelegate {
-    
+protocol HabitViewControllerDelegate: AnyObject {
+     
     func handleColorSelection()
 }

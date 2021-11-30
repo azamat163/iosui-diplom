@@ -8,39 +8,14 @@
 import UIKit
 
 class HabitCollectionViewCell: UICollectionViewCell {
+    
+    var delegate: HabitsViewControllerDelegate?
+    var habit: Habit?
         
     static var identifier: String {
         return String(describing: self)
     }
-    
-    var shared: HabitsStore?
-    
-    var habit: Habit? {
-        didSet {
-            guard let habitName = habit?.name,
-                  let habitDate = habit?.dateString,
-                  let habitColor = habit?.color,
-                  let habitTrackDates = habit?.trackDates,
-                  let habitIsAlreadyTakenToday = habit?.isAlreadyTakenToday
-            else { return }
-            habitNameLabel.text = habitName
-            habitNameLabel.textColor = habitColor
             
-            habitDateLabel.text = habitDate
-            
-            habitCountTrackLabel.text = "\(String.counterText) \(habitTrackDates.count)"
-            
-            if habitIsAlreadyTakenToday == true {
-                habitCheckImageView.image = UIImage(named: .checkImageName)?.withRenderingMode(.alwaysTemplate)
-                habitCheckImageView.tintColor = habitColor
-            } else {
-                habitCheckImageView.image = UIImage(named: .ovalImageName)
-                habitCheckImageView.layer.borderColor = habitColor.cgColor
-                habitCheckImageView.layer.borderWidth = .borderWith
-            }
-        }
-    }
-    
     lazy var habitNameLabel: UILabel = {
         habitNameLabel = UILabel(frame: .zero)
         habitNameLabel.font = .semibold17
@@ -62,7 +37,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
     
     lazy var stackView: UIStackView = {
         stackView = UIStackView(arrangedSubviews: [habitNameLabel, habitDateLabel])
-        stackView.spacing = .spacing
+        stackView.spacing = .HabitCell.spacing
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
         stackView.toAutoLayout()
@@ -81,9 +56,8 @@ class HabitCollectionViewCell: UICollectionViewCell {
     
     lazy var habitCheckImageView: UIImageView = {
         habitCheckImageView = UIImageView(frame: .zero)
-        habitCheckImageView.layer.cornerRadius = .cornerRadius
-        habitCheckImageView.clipsToBounds = true
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(handleTrackHabit))
+        habitCheckImageView.backgroundColor = .white
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(handleTappedImageView))
         habitCheckImageView.addGestureRecognizer(gesture)
         habitCheckImageView.isUserInteractionEnabled = true
         habitCheckImageView.toAutoLayout()
@@ -111,54 +85,41 @@ class HabitCollectionViewCell: UICollectionViewCell {
         setupLayout()
     }
     
+    func configure(with habit: Habit) {
+        self.habit = habit
+        habitNameLabel.text = habit.name
+        habitNameLabel.textColor = habit.color
+        habitDateLabel.text = habit.dateString
+        habitCountTrackLabel.text = "\(String.counterText) \(habit.trackDates.count)"
+        let checkImage = habit.isAlreadyTakenToday ? UIImage(systemName: "checkmark.circle.fill") : UIImage(systemName: "circle")
+        habitCheckImageView.image = checkImage
+        habitCheckImageView.tintColor = habit.color
+    }
+    
     private func setupView() {
         contentView.backgroundColor = .white
-        contentView.layer.cornerRadius = .contentViewCornerRadius
+        contentView.layer.cornerRadius = .HabitCell.contentViewCornerRadius
         contentView.clipsToBounds = true
     }
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .padding),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .padding),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.trailingPadding),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .HabitCell.padding),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .HabitCell.padding),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.HabitCell.trailingPadding),
             
             habitCountTrackLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-            habitCountTrackLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.padding),
+            habitCountTrackLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.HabitCell.padding),
             
             habitCheckImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            habitCheckImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.rightPadding),
-            habitCheckImageView.widthAnchor.constraint(equalToConstant: .size),
-            habitCheckImageView.heightAnchor.constraint(equalToConstant: .size)
+            habitCheckImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.HabitCell.rightPadding),
+            habitCheckImageView.widthAnchor.constraint(equalToConstant: .HabitCell.size),
+            habitCheckImageView.heightAnchor.constraint(equalToConstant: .HabitCell.size)
         ])
     }
     
-    @objc func handleTrackHabit() {
-        guard let shared = shared else { return }
+    @objc func handleTappedImageView() {
         guard let habit = habit else { return }
-        
-        if !habit.isAlreadyTakenToday {
-            shared.track(habit)
-            
-            habitCheckImageView.image = UIImage(named: .checkImageName)?.withRenderingMode(.alwaysTemplate)
-            habitCheckImageView.tintColor = habit.color
-        }
+        delegate?.imageTapped(habit)
     }
-}
-
-private extension String {
-    static let checkImageName = "check-icon"
-    static let ovalImageName = "oval-icon"
-    static let counterText = "Счетчик: "
-}
-
-private extension CGFloat {
-    static let spacing: CGFloat = 4
-    static let borderWith: CGFloat = 2
-    static let cornerRadius: CGFloat = 18
-    static let padding: CGFloat = 20
-    static let trailingPadding: CGFloat = 103
-    static let rightPadding: CGFloat = 25
-    static let size: CGFloat = 36
-    static let contentViewCornerRadius: CGFloat = 8
 }

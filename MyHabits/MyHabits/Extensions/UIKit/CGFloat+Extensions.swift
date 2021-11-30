@@ -38,4 +38,23 @@ extension CGFloat {
         static let width: CGFloat = 26
         static let height: CGFloat = 44
     }
+    
+    enum HabitCell {
+        static let spacing: CGFloat = 4
+        static let cornerRadius: CGFloat = 18
+        static let padding: CGFloat = 20
+        static let trailingPadding: CGFloat = 103
+        static let rightPadding: CGFloat = 25
+        static let size: CGFloat = 36
+        static let contentViewCornerRadius: CGFloat = 8
+    }
+    
+    enum ProgressCell {
+        static let spacing: CGFloat = 8
+        static let progressCornerRadius: CGFloat = 3.5
+        static let contentViewCornerRadius: CGFloat = 8
+        static let padding: CGFloat = 12
+        static let topPadding: CGFloat = 10
+        static let bottonPadding: CGFloat = 15
+    }
 }

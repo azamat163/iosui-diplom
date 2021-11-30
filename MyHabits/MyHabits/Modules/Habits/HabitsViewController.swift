@@ -176,8 +176,7 @@ extension HabitsViewController {
     func progressCollectionViewCell(cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProgressCollectionViewCell.identifier, for: indexPath) as? ProgressCollectionViewCell else { fatalError() }
         
-        let progress = shared.todayProgress
-        cell.todayProgress = progress
+        cell.configure(with: shared.todayProgress)
         
         return cell
     }
@@ -186,14 +185,15 @@ extension HabitsViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HabitCollectionViewCell.identifier, for: indexPath) as? HabitCollectionViewCell else { fatalError() }
         
         let habit = shared.habits[indexPath.item]
-        cell.shared = shared
-        cell.habit = habit
+        cell.configure(with: habit)
+        cell.delegate = self
         
         return cell
     }
 }
 
 extension HabitsViewController {
+    
     @objc func addHabit() {
         let habitVc = HabitViewController()
         let navHabit = UINavigationController(rootViewController: habitVc)
@@ -201,5 +201,16 @@ extension HabitsViewController {
         habitVc.navigationItem.title = .habitTitle
         navHabit.modalPresentationStyle = .fullScreen
         present(navHabit, animated: true, completion: nil)
+    }
+}
+
+extension HabitsViewController: HabitsViewControllerDelegate {
+    
+    func imageTapped(_ habit: Habit) {
+        if !habit.isAlreadyTakenToday {
+            shared.track(habit)
+            
+            collectionView.reloadData()
+        }
     }
 }
