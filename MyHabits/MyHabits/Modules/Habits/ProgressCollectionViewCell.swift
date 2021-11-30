@@ -79,6 +79,8 @@ class ProgressCollectionViewCell: UICollectionViewCell {
         contentView.clipsToBounds = true
     }
     
+    //MARK: - setup constraints
+    
     private func setupLayout() {
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .ProgressCell.topPadding),
@@ -91,6 +93,8 @@ class ProgressCollectionViewCell: UICollectionViewCell {
             progressView.heightAnchor.constraint(equalToConstant: 7)
         ])
     }
+    
+    //MARK: - configure cell
     
     func configure(with progress: Float) {
         statusLabel.text = stateText(with: progress)

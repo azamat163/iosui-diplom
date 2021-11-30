@@ -35,6 +35,8 @@ class InfoViewController: UIViewController {
         setupLayout()
     }
     
+    //MARK: - setup constraints
+    
     private func setupLayout() {
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),

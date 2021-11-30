@@ -31,7 +31,7 @@ class HomeViewController: UITabBarController {
         setupVCs()
     }
     
-    //MARK: - setup viewcontrollers
+    //MARK: - setup viewControllers
     
     func setupVCs() {
         viewControllers = [

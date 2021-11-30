@@ -57,6 +57,8 @@ class HabitViewController: UIViewController {
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
+    //MARK: - setup constraints
+    
     private func setupLayout() {
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),

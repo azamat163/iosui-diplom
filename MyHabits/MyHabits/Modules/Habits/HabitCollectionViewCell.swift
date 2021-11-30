@@ -85,6 +85,8 @@ class HabitCollectionViewCell: UICollectionViewCell {
         setupLayout()
     }
     
+    //MARK: - configure cell
+    
     func configure(with habit: Habit) {
         self.habit = habit
         habitNameLabel.text = habit.name
@@ -101,6 +103,8 @@ class HabitCollectionViewCell: UICollectionViewCell {
         contentView.layer.cornerRadius = .HabitCell.contentViewCornerRadius
         contentView.clipsToBounds = true
     }
+    
+    //MARK: - setup constraints
     
     private func setupLayout() {
         NSLayoutConstraint.activate([

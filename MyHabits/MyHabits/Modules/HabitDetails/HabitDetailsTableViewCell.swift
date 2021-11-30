@@ -45,13 +45,15 @@ class HabitDetailsTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK
+    //MARK: - configure cell
     
     func configure(dateString: String, isTracked: Bool) {
         dateLabel.text = dateString
         let isTrack = isTracked ? false : true
         dateCheckImageView.isHidden = isTrack
     }
+    
+    //MARK: - setup constraints
     
     private func setupLayout() {
         NSLayoutConstraint.activate([

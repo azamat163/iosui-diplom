@@ -114,6 +114,8 @@ class HabitView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - setup constraints
+    
     private func setupLayout() {
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: .HabitView.topPadding),

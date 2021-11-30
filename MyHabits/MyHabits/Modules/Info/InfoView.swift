@@ -116,6 +116,8 @@ class InfoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - setup constraints
+    
     private func setupLayout() {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: .InfoView.topPadding),

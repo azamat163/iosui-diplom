@@ -39,6 +39,8 @@ class HabitsViewController: UIViewController {
         setupLayout()
     }
     
+    //MARK: - setup collection View
+    
     private func setupView() {
         view.backgroundColor = .lightGray
         
@@ -50,12 +52,16 @@ class HabitsViewController: UIViewController {
         collectionView.reloadData()
     }
     
+    //MARK: - setup navigation controller
+    
     private func setupNav() {
         navigationController?.navigationBar.tintColor = .purple
 
         let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addHabit))
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
+    
+    //MARK: - setup constraints
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
@@ -66,6 +72,8 @@ class HabitsViewController: UIViewController {
         ])
     }
     
+    //MARK: - create collectionViewCompositionalLayout
+
     private func createCollectionViewLayout() -> UICollectionViewLayout {
         return UICollectionViewCompositionalLayout { (section, env) -> NSCollectionLayoutSection? in
             guard let sectionKind = Section(rawValue: section) else { return nil }
@@ -88,8 +96,6 @@ extension HabitsViewController: UICollectionViewDelegate {
             habitDetailsVc.habit = habit
             habitDetailsVc.navigationItem.title = habit.name
             navigationController?.pushViewController(habitDetailsVc, animated: true)
-            
-            collectionView.reloadData()
         }
     }
 }
@@ -125,7 +131,6 @@ extension HabitsViewController: UICollectionViewDataSource {
 }
 
 extension HabitsViewController {
-    
     enum Section: Int, CaseIterable  {
         case progress = 0
         case main = 1
@@ -196,7 +201,6 @@ extension HabitsViewController {
 }
 
 extension HabitsViewController {
-    
     @objc func addHabit() {
         let habitVc = HabitViewController()
         let navHabit = UINavigationController(rootViewController: habitVc)
@@ -208,7 +212,6 @@ extension HabitsViewController {
 }
 
 extension HabitsViewController: HabitsViewControllerDelegate {
-    
     func imageTapped(_ habit: Habit) {
         if !habit.isAlreadyTakenToday {
             shared.track(habit)
