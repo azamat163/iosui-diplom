@@ -14,7 +14,7 @@ class HabitDetailsViewController: UIViewController {
     var habit: Habit?
     
     lazy var tableView: UITableView = {
-        tableView = UITableView(frame: .zero)
+        tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .lightGray
         tableView.toAutoLayout()
         
@@ -68,6 +68,14 @@ extension HabitDetailsViewController: UITableViewDelegate {
 }
 
 extension HabitDetailsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        <#code#>
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        47
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return shared.dates.count
     }
