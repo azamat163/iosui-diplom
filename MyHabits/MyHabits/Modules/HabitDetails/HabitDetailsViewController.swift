@@ -9,7 +9,7 @@ import UIKit
 
 class HabitDetailsViewController: UIViewController {
         
-    fileprivate let shared = HabitsStore.shared
+    private let shared = HabitsStore.shared
     
     var habit: Habit?
     
@@ -43,7 +43,6 @@ class HabitDetailsViewController: UIViewController {
         view.backgroundColor = .lightGray
         
         tableView.dataSource = self
-        tableView.delegate = self
         
         tableView.register(HabitDetailsTableViewCell.self, forCellReuseIdentifier: HabitDetailsTableViewCell.identifier)
         tableView.rowHeight = UITableView.automaticDimension
@@ -72,10 +71,6 @@ class HabitDetailsViewController: UIViewController {
     }
 }
 
-extension HabitDetailsViewController: UITableViewDelegate {
-    
-}
-
 extension HabitDetailsViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -101,7 +96,7 @@ extension HabitDetailsViewController: UITableViewDataSource {
     }
     
     private func configureCell(with cell: HabitDetailsTableViewCell, indexPath: IndexPath) -> UITableViewCell {
-        guard let habit = habit else { fatalError() }
+        guard let habit = habit else { return UITableViewCell() }
         
         let date = shared.dates[indexPath.row]
         let isTracked = shared.habit(habit, isTrackedIn: date)

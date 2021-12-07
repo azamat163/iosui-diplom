@@ -9,7 +9,7 @@ import UIKit
 
 class HabitsViewController: UIViewController {
     
-    fileprivate let shared = HabitsStore.shared
+    private let shared = HabitsStore.shared
     
     lazy var collectionView: UICollectionView = {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createCollectionViewLayout())
@@ -182,7 +182,7 @@ extension HabitsViewController {
     }
     
     func progressCollectionViewCell(cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProgressCollectionViewCell.identifier, for: indexPath) as? ProgressCollectionViewCell else { fatalError() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProgressCollectionViewCell.identifier, for: indexPath) as? ProgressCollectionViewCell else { return ProgressCollectionViewCell() }
         
         cell.configure(with: shared.todayProgress)
         
@@ -190,7 +190,7 @@ extension HabitsViewController {
     }
     
     func mainCollectionViewCell(cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HabitCollectionViewCell.identifier, for: indexPath) as? HabitCollectionViewCell else { fatalError() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HabitCollectionViewCell.identifier, for: indexPath) as? HabitCollectionViewCell else { return UICollectionViewCell() }
         
         let habit = shared.habits[indexPath.item]
         cell.configure(with: habit)

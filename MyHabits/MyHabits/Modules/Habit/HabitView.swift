@@ -14,8 +14,8 @@ class HabitView: UIView {
 
     lazy var nameLabel: HabitNameLabel = {
         nameLabel = HabitNameLabel(frame: .zero)
+        nameLabel.textColor = .black
         nameLabel.apply(title: .nameLabelText)
-        nameLabel.toAutoLayout()
         
         return nameLabel
     }()
@@ -27,7 +27,6 @@ class HabitView: UIView {
         setNameTextField.textColor = .blue
         setNameTextField.backgroundColor = .white
         setNameTextField.font = .semibold17
-        setNameTextField.toAutoLayout()
         
         return setNameTextField
     }()
@@ -35,8 +34,8 @@ class HabitView: UIView {
     
     lazy var colorLabel: HabitNameLabel = {
         colorLabel = HabitNameLabel(frame: .zero)
+        nameLabel.textColor = .black
         colorLabel.apply(title: .colorLabelText)
-        colorLabel.toAutoLayout()
         
         return colorLabel
     }()
@@ -48,23 +47,22 @@ class HabitView: UIView {
         colorView.layer.cornerRadius = .HabitView.cornerRadius
         let gesture = UITapGestureRecognizer(target: self, action: #selector(handleColorSelection))
         colorView.addGestureRecognizer(gesture)
-        colorView.toAutoLayout()
         
         return colorView
     }()
     
     lazy var dateLabel: HabitNameLabel = {
         dateLabel = HabitNameLabel(frame: .zero)
+        nameLabel.textColor = .black
         dateLabel.apply(title: .dateLabelText)
-        dateLabel.toAutoLayout()
         
         return dateLabel
     }()
     
     lazy var setDateLabel: SetDateLabel = {
         setDateLabel = SetDateLabel(frame: .zero)
+        nameLabel.textColor = .black
         setDateLabel.apply(text: convertDateToStr(with: Date()))
-        setDateLabel.toAutoLayout()
         
         return setDateLabel
     }()
@@ -75,7 +73,6 @@ class HabitView: UIView {
         datePicker.locale = .current
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.addTarget(self, action: #selector(handleDateSelection), for: .valueChanged)
-        datePicker.toAutoLayout()
         
         return datePicker
     }()
@@ -88,7 +85,6 @@ class HabitView: UIView {
         deleteButton.titleLabel?.textAlignment = .center
         deleteButton.isHidden = true
         deleteButton.addTarget(self, action: #selector(deleteHabit), for: .touchUpInside)
-        deleteButton.toAutoLayout()
         
         return deleteButton
     }()

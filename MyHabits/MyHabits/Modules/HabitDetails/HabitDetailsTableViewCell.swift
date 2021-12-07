@@ -17,7 +17,6 @@ class HabitDetailsTableViewCell: UITableViewCell {
         dateLabel = UILabel(frame: .zero)
         dateLabel.font = .regular17
         dateLabel.textColor = .black
-        dateLabel.toAutoLayout()
         
         return dateLabel
     }()
@@ -25,7 +24,6 @@ class HabitDetailsTableViewCell: UITableViewCell {
     lazy var dateCheckImageView: UIImageView = {
         dateCheckImageView = UIImageView(frame: .zero)
         dateCheckImageView.image = UIImage(named: .dateCheckImageName)
-        dateCheckImageView.toAutoLayout()
         
         return dateCheckImageView
     }()

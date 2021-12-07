@@ -9,7 +9,7 @@ import UIKit
 
 class HabitViewController: UIViewController {
     
-    fileprivate let shared = HabitsStore.shared
+    private let shared = HabitsStore.shared
     
     var handler: ((String?)->())?
     var delegate: HabitDetailsViewControllerDelegate?
